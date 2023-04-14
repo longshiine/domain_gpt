@@ -1,0 +1,6 @@
+/data
+/notebook
+/docs
+/expired_index.json
+*.json
+.DS_Store
