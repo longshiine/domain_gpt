@@ -5,8 +5,9 @@ from pathlib import Path
 from utils.reader.NotionPageReader import NotionPageReader
 from utils.reader.UnstructuredReader import UnstructuredReader
 
-
-os.environ["NOTION_INTEGRATION_TOKEN"] = 'secret_HiVnOZQbGjMZvsMSmBniDKElJYgCLz0Iumtv5026Lj6'
+from dotenv import load_dotenv
+load_dotenv(verbose=True)
+os.environ["NOTION_INTEGRATION_TOKEN"] = os.getenv('NOTION_INTEGRATION_TOKEN')
 
 def unstructured_loader(file_path: Path):
     reader = UnstructuredReader()
@@ -24,7 +25,7 @@ def korean_pdf_loader(file_path: Path):
     return documents
 
 def notion_loader(page_ids: list):
-    integration_token = 'secret_HiVnOZQbGjMZvsMSmBniDKElJYgCLz0Iumtv5026Lj6'
+    integration_token = os.getenv('NOTION_INTEGRATION_TOKEN')
     reader = NotionPageReader(integration_token=integration_token)
     documents = reader.load_data(page_ids=page_ids)
     return documents
