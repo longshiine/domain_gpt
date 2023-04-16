@@ -4,3 +4,4 @@
 /expired_index.json
 *.json
 .DS_Store
+.env

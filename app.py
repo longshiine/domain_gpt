@@ -15,7 +15,10 @@ from pathlib import Path
 from utils.DataLoader import unstructured_loader, korean_pdf_loader, notion_loader, web_loader
 
 ## Caching ##
-os.environ["OPENAI_API_KEY"] = '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'
+from dotenv import load_dotenv
+load_dotenv(verbose=True)
+os.environ["OPENAI_API_KEY"] = os.getenv('OPENAI_API_KEY')
+
 
 max_input_size = 4096
 num_outputs = 512
