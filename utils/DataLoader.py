@@ -1,10 +1,17 @@
 from llama_index import SimpleDirectoryReader, download_loader
-from utils.NotionPageReader import NotionPageReader
+from utils.reader.NotionPageReader import NotionPageReader
 import os
 from pathlib import Path
+from utils.reader.NotionPageReader import NotionPageReader
+from utils.reader.UnstructuredReader import UnstructuredReader
 
 
 os.environ["NOTION_INTEGRATION_TOKEN"] = 'secret_HiVnOZQbGjMZvsMSmBniDKElJYgCLz0Iumtv5026Lj6'
+
+def unstructured_loader(file_path: Path):
+    reader = UnstructuredReader()
+    documents = reader.load_data(file=file_path)
+    return documents
 
 def directory_loader(file_path: Path):
     documents = SimpleDirectoryReader(file_path).load_data()
